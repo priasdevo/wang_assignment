@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './modules/example/pages/index';
+import TaskPage from './modules/task/pages/index'
 import * as serviceWorker from './serviceWorker';
 
 export default function Apps() {
     return (
-        <BrowserRouter>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />}>
-          </Route>
+          <Route path="/" element={<App />}></Route>
+          <Route path="/test" element={<TaskPage />}></Route>
         </Routes>
       </BrowserRouter>
     );
