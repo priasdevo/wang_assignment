@@ -2,7 +2,24 @@ import React from 'react';
 import { Select, MenuItem, FormControl, InputLabel, TextField, ToggleButtonGroup, ToggleButton } from '@mui/material'
 import { ViewListOutlined, FormatListBulletedOutlined, LightMode, DarkMode } from '@mui/icons-material'
 
-function FilterContainer() {
+const FilterContainer = (props) => {
+  const {display, setDisplay} = props
+  const [theme, setTheme] = React.useState('Light');
+
+  const handleDisplayChange = (event,newDisplay) => {
+    if(newDisplay !== null){
+      setDisplay(newDisplay);
+    }
+    
+  }
+
+  const handleThemeChange = (event,newTheme) => {
+    if(newTheme !== null){
+      setTheme(newTheme)
+    }
+    
+  }
+
   return (
     <div className="TaskContainer" style={{
         display: "flex",
@@ -43,20 +60,20 @@ function FilterContainer() {
             <MenuItem value={"Ice"}>Ice</MenuItem>
         </Select>
     </FormControl>
-    <ToggleButtonGroup aria-label="Medium sizes">
-      <ToggleButton value="left" key="left">
+    <ToggleButtonGroup value={display} onChange={handleDisplayChange} exclusive={true} aria-label="Medium sizes">
+      <ToggleButton value="Card" key="Card">
         <ViewListOutlined />
       </ToggleButton>
-      <ToggleButton value="left" key="left">
+      <ToggleButton value="Table" key="Table">
         <FormatListBulletedOutlined />
       </ToggleButton>
     </ToggleButtonGroup>
 
-    <ToggleButtonGroup aria-label="Medium sizes">
-      <ToggleButton value="left" key="left">
+    <ToggleButtonGroup value={theme} onChange={handleThemeChange} exclusive={true} aria-label="Medium sizes">
+      <ToggleButton value="Light" key="Light">
         <LightMode />
       </ToggleButton>
-      <ToggleButton value="left" key="left">
+      <ToggleButton value="Dark" key="Dark">
         <DarkMode />
       </ToggleButton>
     </ToggleButtonGroup>

@@ -1,19 +1,28 @@
 import React from 'react';
-import TaskCardHeader from './TaskCardHeader/index'
-import TaskCardBody from './TaskCardBody/index'
-import TaskCardFooter from './TaskCardFooter/index'
+import TaskCardHeader from './components/TaskCardHeader/index'
+import TaskCardBody from './components/TaskCardBody/index'
+import TaskCardFooter from './components/TaskCardFooter/index'
 
 import { CardContainer } from './styled';
 import { Divider } from '@mui/material';
 
-function TaskCard() {
+const TaskCard = (props) => {
+  const {
+    taskName,
+    taskType,
+    taskStatus,
+    taskDescription,
+    taskAssignee,
+    taskRemaining,
+    taskId
+  } = props
   return (
-    <CardContainer>
-      <TaskCardHeader/>
+    <CardContainer key={taskId}>
+      <TaskCardHeader taskName={taskName} taskStatus={taskStatus} taskType={taskType} />
       <Divider variant="fullWidth" style={{width:'100%'}}/>
-      <TaskCardBody />
+      <TaskCardBody taskDescription={taskDescription} taskAssignee={taskAssignee} />
       <Divider variant="fullWidth" style={{width:'100%'}}/>
-      <TaskCardFooter />
+      <TaskCardFooter taskRemaining={taskRemaining} />
     </CardContainer>
   );
 }

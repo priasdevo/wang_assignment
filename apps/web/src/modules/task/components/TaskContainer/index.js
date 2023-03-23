@@ -1,8 +1,9 @@
 import React from 'react';
 import TaskCard from './TaskCard/index'
-import TaskLine from './TaskLine/index'
+import TaskTable from './TaskTable/index'
+import { taskHolder } from './placeholder';
 
-function TaskContainer(props) {
+const TaskContainer = (props) => {
   const {showType} = props;
   return (
     <div className="TaskContainer" style={{
@@ -15,11 +16,14 @@ function TaskContainer(props) {
         padding: "15px"
     }}>
     {showType === "Card" && (<>
-      <TaskCard/>
-      <TaskCard/>
+      {taskHolder.map((item,index) => {
+        return(
+          <TaskCard {...item}/>
+        )
+      })}
     </>)}
     {showType === "Table" && (<>
-      <TaskLine/>
+      <TaskTable task={taskHolder}/>
     </>)}
       
     </div>

@@ -2,15 +2,16 @@ import React from 'react';
 import { Typography, Chip } from '@mui/material'
 import { HeaderRow } from './styled';
 
-function TaskCardHeader() {
+const TaskCardHeader = (props) => {
+  const {taskName, taskStatus, taskType} = props
   return (
     <HeaderRow>
-      <Typography>[Task name]</Typography>
+      <Typography>{taskName}</Typography>
       <div style={{
         display: 'flex',
         gap: '8px'}}>
-        <Chip label="Front-End" color="primary" />
-        <Chip label="TODO" />
+        <Chip label={taskType} color="primary" />
+        <Chip label={taskStatus} />
       </div>
     </HeaderRow>
   );
