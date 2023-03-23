@@ -1,7 +1,9 @@
 import React from 'react';
 import TaskCard from './TaskCard/index'
+import TaskLine from './TaskLine/index'
 
-function TaskContainer() {
+function TaskContainer(props) {
+  const {showType} = props;
   return (
     <div className="TaskContainer" style={{
         display: "flex",
@@ -12,8 +14,14 @@ function TaskContainer() {
         gap: "15px",
         padding: "15px"
     }}>
+    {showType === "Card" && (<>
       <TaskCard/>
       <TaskCard/>
+    </>)}
+    {showType === "Table" && (<>
+      <TaskLine/>
+    </>)}
+      
     </div>
   );
 }

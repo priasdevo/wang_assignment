@@ -14,7 +14,7 @@ function TaskPage() {
         padding: "15px"
     }}>
       <FilterContainer/>
-      <TaskContainer/>
+      <TaskContainer showType="Table"/>
     </div>
   );
 }

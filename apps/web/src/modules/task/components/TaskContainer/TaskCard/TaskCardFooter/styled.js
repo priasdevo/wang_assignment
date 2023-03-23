@@ -5,7 +5,6 @@ export const FooterRow = styled('div')`
   width: 100%;
   gap: 12px;
   height: fit-content;
-  margin-bottom: 1rem;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 `

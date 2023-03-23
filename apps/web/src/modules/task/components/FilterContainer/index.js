@@ -17,7 +17,7 @@ function FilterContainer() {
     <FormControl sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
         <InputLabel>Task Type</InputLabel>
         <Select
-          label="Assignee"
+          label="TaskType"
         >
             <MenuItem value={"P"}>Front-End</MenuItem>
             <MenuItem value={"Ice"}>Back-End</MenuItem>
