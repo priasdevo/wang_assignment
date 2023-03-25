@@ -23,7 +23,7 @@ const TaskContainer = (props) => {
       })}
     </>)}
     {showType === "Table" && (<>
-      <TaskTable task={taskHolder}/>
+      <TaskTable isDarkMode={isDarkMode} task={taskHolder}/>
     </>)}
       
     </div>

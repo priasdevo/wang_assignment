@@ -5,9 +5,10 @@ import TaskLine from './components/TaskLine';
 import { taskHolder } from '../placeholder';
 
 const TaskTable = (props) => {
+    const {isDarkMode} = props
   return (
-    <TableContainer>
-        <Table sx={{backgroundColor: "white"}}>
+    <TableContainer >
+        <Table sx={{backgroundColor : isDarkMode ? "#D4C4A4" : "white"}}>
             <TableHead>
                 <TableRow>
                     <TableCell align='left'>Task Name</TableCell>
