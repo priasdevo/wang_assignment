@@ -2,7 +2,8 @@ import React from 'react';
 import TaskContainer from '../components/TaskContainer/index';
 import FilterContainer from '../components/FilterContainer/index'
 
-const TaskPage = () => {
+const TaskPage = (props) => {
+  const {isDarkMode, setIsDarkMode} = props
   const [display, setDisplay] = React.useState('Card');
   return (
     <div className="TaskPage" style={{
@@ -14,7 +15,7 @@ const TaskPage = () => {
         gap: "15px",
         padding: "15px"
     }}>
-      <FilterContainer display={display} setDisplay={setDisplay}/>
+      <FilterContainer display={display} setDisplay={setDisplay} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <TaskContainer showType={display} />
     </div>
   );

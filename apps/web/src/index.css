@@ -8,7 +8,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.dark-mode {
+  background-color: #565043; /* background color for dark mode */
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+

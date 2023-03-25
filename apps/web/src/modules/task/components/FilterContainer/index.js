@@ -3,9 +3,7 @@ import { Select, MenuItem, FormControl, InputLabel, TextField, ToggleButtonGroup
 import { ViewListOutlined, FormatListBulletedOutlined, LightMode, DarkMode } from '@mui/icons-material'
 
 const FilterContainer = (props) => {
-  const {display, setDisplay} = props
-  const [theme, setTheme] = React.useState('Light');
-
+  const {display, setDisplay, isDarkMode, setIsDarkMode} = props
   const handleDisplayChange = (event,newDisplay) => {
     if(newDisplay !== null){
       setDisplay(newDisplay);
@@ -15,7 +13,7 @@ const FilterContainer = (props) => {
 
   const handleThemeChange = (event,newTheme) => {
     if(newTheme !== null){
-      setTheme(newTheme)
+      setIsDarkMode(newTheme)
     }
     
   }
@@ -69,11 +67,11 @@ const FilterContainer = (props) => {
       </ToggleButton>
     </ToggleButtonGroup>
 
-    <ToggleButtonGroup value={theme} onChange={handleThemeChange} exclusive={true} aria-label="Medium sizes">
-      <ToggleButton value="Light" key="Light">
+    <ToggleButtonGroup value={isDarkMode} onChange={handleThemeChange} exclusive={true} aria-label="Medium sizes">
+      <ToggleButton value={false} key="Light">
         <LightMode />
       </ToggleButton>
-      <ToggleButton value="Dark" key="Dark">
+      <ToggleButton value={true} key="Dark">
         <DarkMode />
       </ToggleButton>
     </ToggleButtonGroup>

@@ -7,13 +7,26 @@ import TaskPage from './modules/task/pages/index'
 import * as serviceWorker from './serviceWorker';
 
 export default function Apps() {
+    const [isDarkMode, setIsDarkMode] = React.useState(false);
+
+    React.useEffect(() => {
+      const body = document.querySelector('body');
+      if (isDarkMode) {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.remove('dark-mode');
+      }
+    }, [isDarkMode]);
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route path="/test" element={<TaskPage />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}></Route>
+            <Route path="/test" element={<TaskPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+      
     );
   }
 

@@ -19,7 +19,6 @@ const TaskCard = (props) => {
   return (
     <CardContainer key={taskId}>
       <TaskCardHeader taskName={taskName} taskStatus={taskStatus} taskType={taskType} />
-      <Divider variant="fullWidth" style={{width:'100%'}}/>
       <TaskCardBody taskDescription={taskDescription} taskAssignee={taskAssignee} />
       <Divider variant="fullWidth" style={{width:'100%'}}/>
       <TaskCardFooter taskRemaining={taskRemaining} />
