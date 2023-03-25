@@ -14,10 +14,11 @@ const TaskCard = (props) => {
     taskDescription,
     taskAssignee,
     taskRemaining,
-    taskId
+    taskId,
+    isDarkMode
   } = props
   return (
-    <CardContainer key={taskId}>
+    <CardContainer key={taskId} sx={{backgroundColor : isDarkMode ? "#D4C4A4" : ""}}>
       <TaskCardHeader taskName={taskName} taskStatus={taskStatus} taskType={taskType} />
       <TaskCardBody taskDescription={taskDescription} taskAssignee={taskAssignee} />
       <Divider variant="fullWidth" style={{width:'100%'}}/>

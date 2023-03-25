@@ -28,8 +28,8 @@ const FilterContainer = (props) => {
         gap: "15px",
         padding: "15px"
     }}>
-    <TextField label="Task name" sx={{backgroundColor: "white"}}/>
-    <FormControl sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
+    <TextField label="Task name" sx={{backgroundColor : isDarkMode ? "#D4C4A4" : "white"}}/>
+    <FormControl sx={{ m: 1, minWidth: 120, backgroundColor : isDarkMode ? "#D4C4A4" : "white" }}>
         <InputLabel>Task Type</InputLabel>
         <Select
           label="TaskType"
@@ -38,7 +38,7 @@ const FilterContainer = (props) => {
             <MenuItem value={"Ice"}>Back-End</MenuItem>
         </Select>
     </FormControl>
-    <FormControl sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
+    <FormControl sx={{ m: 1, minWidth: 120, backgroundColor : isDarkMode ? "#D4C4A4" : "white" }}>
         <InputLabel>JobStatus</InputLabel>
         <Select
           label="JobStatus"
@@ -49,7 +49,7 @@ const FilterContainer = (props) => {
             <MenuItem value={"Done"}>Done</MenuItem>
         </Select>
     </FormControl>
-    <FormControl sx={{ m: 1, minWidth: 120, backgroundColor: "white" }}>
+    <FormControl sx={{ m: 1, minWidth: 120, backgroundColor : isDarkMode ? "#D4C4A4" : "white" }}>
         <InputLabel>Assignee</InputLabel>
         <Select
           label="Assignee"
@@ -58,7 +58,7 @@ const FilterContainer = (props) => {
             <MenuItem value={"Ice"}>Ice</MenuItem>
         </Select>
     </FormControl>
-    <ToggleButtonGroup value={display} onChange={handleDisplayChange} exclusive={true} aria-label="Medium sizes">
+    <ToggleButtonGroup value={display} onChange={handleDisplayChange} exclusive={true} sx={{backgroundColor : isDarkMode ? "#D4C4A4" : "white"}} aria-label="Medium sizes">
       <ToggleButton value="Card" key="Card">
         <ViewListOutlined />
       </ToggleButton>
@@ -67,7 +67,7 @@ const FilterContainer = (props) => {
       </ToggleButton>
     </ToggleButtonGroup>
 
-    <ToggleButtonGroup value={isDarkMode} onChange={handleThemeChange} exclusive={true} aria-label="Medium sizes">
+    <ToggleButtonGroup value={isDarkMode} onChange={handleThemeChange} exclusive={true} sx={{backgroundColor : isDarkMode ? "#D4C4A4" : "white"}} aria-label="Medium sizes">
       <ToggleButton value={false} key="Light">
         <LightMode />
       </ToggleButton>

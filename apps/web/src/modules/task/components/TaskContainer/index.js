@@ -4,7 +4,7 @@ import TaskTable from './TaskTable/index'
 import { taskHolder } from './placeholder';
 
 const TaskContainer = (props) => {
-  const {showType} = props;
+  const {showType, isDarkMode} = props;
   return (
     <div className="TaskContainer" style={{
         display: "flex",
@@ -18,7 +18,7 @@ const TaskContainer = (props) => {
     {showType === "Card" && (<>
       {taskHolder.map((item,index) => {
         return(
-          <TaskCard {...item}/>
+          <TaskCard isDarkMode={isDarkMode} {...item}/>
         )
       })}
     </>)}

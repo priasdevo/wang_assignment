@@ -16,7 +16,7 @@ const TaskPage = (props) => {
         padding: "15px"
     }}>
       <FilterContainer display={display} setDisplay={setDisplay} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <TaskContainer showType={display} />
+      <TaskContainer showType={display} isDarkMode={isDarkMode}/>
     </div>
   );
 }
