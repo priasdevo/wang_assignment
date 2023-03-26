@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "create-react-app": "^3.4.1",
     "yarn": "^1.22.5"
   },
   "devDependencies": {
