@@ -1,0 +1,13 @@
+// web/jsconfig.json
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "baseUrl": ".",
+      "moduleResolution": "node",
+      "paths": {
+        "*": ["*", "src/*"]
+      }
+    },
+    "exclude": ["node_modules"]
+  }

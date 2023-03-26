@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Modal, Box, TextField, Button } from '@mui/material';
+import React, { useState } from 'react'
+import { Modal, Box, TextField, Button } from '@mui/material'
 
 const EditTaskModal = (props) => {
-  const { isOpen, onClose, taskAssignee, taskRemaining, onSave } = props;
-  const [assignee, setAssignee] = useState(taskAssignee);
-  const [remaining, setRemaining] = useState(taskRemaining);
+  const { isOpen, onClose, taskAssignee, taskRemaining, onSave } = props
+  const [assignee, setAssignee] = useState(taskAssignee)
+  const [remaining, setRemaining] = useState(taskRemaining)
 
   const handleSave = () => {
-    onSave(assignee, remaining);
-    onClose();
-  };
+    onSave(assignee, remaining)
+    onClose()
+  }
 
   return (
     <Modal
@@ -57,7 +57,7 @@ const EditTaskModal = (props) => {
         </Box>
       </Box>
     </Modal>
-  );
-};
+  )
+}
 
-export default EditTaskModal;
+export default EditTaskModal

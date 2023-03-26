@@ -11,5 +11,10 @@
   "dependencies": {
     "create-react-app": "^3.4.1",
     "yarn": "^1.22.5"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.7"
   }
 }
