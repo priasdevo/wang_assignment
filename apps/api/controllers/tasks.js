@@ -10,7 +10,7 @@ exports.createTask = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      data: task,
+      data: newTask,
     })
   } catch (err) {
     console.error(err)

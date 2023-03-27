@@ -1,5 +1,5 @@
 // src/components/NewTaskPage/index.js
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Typography,
   TextField,
@@ -11,22 +11,40 @@ import {
   Grid,
 } from '@mui/material'
 import { NewTaskContainer } from './styled'
+import useCreateTask from './hooks/useCreateTask/index'
 
 const NewTaskPage = () => {
-  const [taskName, setTaskName] = useState('')
-  const [taskDescription, setTaskDescription] = useState('')
-  const [taskType, setTaskType] = useState('')
-  const [taskStatus, setTaskStatus] = useState('')
-  const [expectedDeadline, setExpectedDeadline] = useState('')
-  const [userStory, setUserStory] = useState('')
-  const [volunteer, setVolunteer] = useState('')
-  const [estimatedManHours, setEstimatedManHours] = useState('')
-  const [remainingManHours, setRemainingManHours] = useState('')
-  const [epic, setEpic] = useState('')
-  const [epicId, setEpicId] = useState('')
-  const [sprintId, setSprintId] = useState('')
-  const [taskId, setTaskId] = useState('')
-  const [userStoryId, setUserStoryId] = useState('')
+  const {
+    taskName,
+    setTaskName,
+    taskDescription,
+    setTaskDescription,
+    taskType,
+    setTaskType,
+    taskStatus,
+    setTaskStatus,
+    expectedDeadline,
+    setExpectedDeadline,
+    userStory,
+    setUserStory,
+    volunteer,
+    setVolunteer,
+    estimatedManHour,
+    setEstimatedManHour,
+    remainingManHour,
+    setRemainingManHour,
+    epic,
+    setEpic,
+    epicId,
+    setEpicId,
+    sprintId,
+    setSprintId,
+    taskId,
+    setTaskId,
+    userStoryId,
+    setUserStoryId,
+    createTask,
+  } = useCreateTask()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -137,9 +155,9 @@ const NewTaskPage = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Estimated Man Hours"
-              value={estimatedManHours}
-              onChange={(e) => setEstimatedManHours(e.target.value)}
+              label="Estimated Man Hour"
+              value={estimatedManHour}
+              onChange={(e) => setEstimatedManHour(e.target.value)}
               fullWidth
               margin="normal"
               type="number"
@@ -149,9 +167,9 @@ const NewTaskPage = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField
-              label="Remaining Man Hours"
-              value={remainingManHours}
-              onChange={(e) => setRemainingManHours(e.target.value)}
+              label="Remaining Man Hour"
+              value={remainingManHour}
+              onChange={(e) => setRemainingManHour(e.target.value)}
               fullWidth
               margin="normal"
               type="number"
@@ -185,7 +203,12 @@ const NewTaskPage = () => {
             margin="normal"
           />
         </Grid>
-        <Button type="submit" variant="contained" sx={{ marginTop: '1rem' }}>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ marginTop: '1rem' }}
+          onClick={createTask}
+        >
           Create Task
         </Button>
       </form>
