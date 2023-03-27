@@ -1,5 +1,5 @@
 // src/components/NewTaskPage/index.js
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   Typography,
   TextField,
@@ -9,54 +9,54 @@ import {
   Select,
   MenuItem,
   Grid,
-} from '@mui/material';
-import { NewTaskContainer } from './styled';
+} from '@mui/material'
+import { NewTaskContainer } from './styled'
 
 const NewTaskPage = () => {
-  const [taskName, setTaskName] = useState('');
-  const [taskDescription, setTaskDescription] = useState('');
-  const [taskType, setTaskType] = useState('');
-  const [taskStatus, setTaskStatus] = useState('');
-  const [expectedDeadline, setExpectedDeadline] = useState('');
-  const [userStory, setUserStory] = useState('');
-  const [volunteer, setVolunteer] = useState('');
-  const [estimatedManHours, setEstimatedManHours] = useState('');
-  const [remainingManHours, setRemainingManHours] = useState('');
-  const [epic, setEpic] = useState('');
-  const [epicId, setEpicId] = useState('');
-  const [sprintId, setSprintId] = useState('');
-  const [taskId, setTaskId] = useState('');
-  const [userStoryId, setUserStoryId] = useState('');
+  const [taskName, setTaskName] = useState('')
+  const [taskDescription, setTaskDescription] = useState('')
+  const [taskType, setTaskType] = useState('')
+  const [taskStatus, setTaskStatus] = useState('')
+  const [expectedDeadline, setExpectedDeadline] = useState('')
+  const [userStory, setUserStory] = useState('')
+  const [volunteer, setVolunteer] = useState('')
+  const [estimatedManHours, setEstimatedManHours] = useState('')
+  const [remainingManHours, setRemainingManHours] = useState('')
+  const [epic, setEpic] = useState('')
+  const [epicId, setEpicId] = useState('')
+  const [sprintId, setSprintId] = useState('')
+  const [taskId, setTaskId] = useState('')
+  const [userStoryId, setUserStoryId] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // Perform necessary actions to create a new task with the input data
-  };
+  }
 
   return (
     <NewTaskContainer>
       <Typography variant="h4" gutterBottom>
         Create a New Task
       </Typography>
-      <form onSubmit={handleSubmit} style={{width: "100%"}}>
-          <Grid item xs={12}>
-            <TextField
-              label="Task Name"
-              value={taskName}
-              onChange={(e) => setTaskName(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="Task ID"
-              value={taskId}
-              onChange={(e) => setTaskId(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-          </Grid>
+      <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+        <Grid item xs={12}>
+          <TextField
+            label="Task Name"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Task ID"
+            value={taskId}
+            onChange={(e) => setTaskId(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+        </Grid>
         <TextField
           label="Task Description"
           value={taskDescription}
@@ -167,30 +167,30 @@ const NewTaskPage = () => {
             />
           </Grid>
         </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="EPIC ID"
-              value={epicId}
-              onChange={(e) => setEpicId(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              label="SPRINT ID"
-              value={sprintId}
-              onChange={(e) => setSprintId(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-          </Grid>
-        <Button type="submit" variant="contained" sx={{marginTop: '1rem'}}>
+        <Grid item xs={12}>
+          <TextField
+            label="EPIC ID"
+            value={epicId}
+            onChange={(e) => setEpicId(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="SPRINT ID"
+            value={sprintId}
+            onChange={(e) => setSprintId(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+        </Grid>
+        <Button type="submit" variant="contained" sx={{ marginTop: '1rem' }}>
           Create Task
         </Button>
       </form>
     </NewTaskContainer>
-  );
-};
+  )
+}
 
-export default NewTaskPage;
+export default NewTaskPage

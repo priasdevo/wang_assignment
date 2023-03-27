@@ -31,7 +31,7 @@ export default function Apps() {
             }
           ></Route>
           <Route
-            path="/task/1"
+            path="/task/:taskId"
             element={
               <TaskDetail
                 epic="Sample Epic"
