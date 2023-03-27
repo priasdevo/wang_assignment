@@ -1,10 +1,13 @@
 import React from 'react'
 import TaskContainer from '../components/TaskContainer/index'
 import FilterContainer from '../components/FilterContainer/index'
+import useTaskList from './hooks/useTaskListData'
 
 const TaskPage = (props) => {
   const { isDarkMode, setIsDarkMode } = props
   const [display, setDisplay] = React.useState('Card')
+  const { task, fetchTaskList } = useTaskList()
+  fetchTaskList()
   return (
     <div
       className="TaskPage"
@@ -24,7 +27,13 @@ const TaskPage = (props) => {
         isDarkMode={isDarkMode}
         setIsDarkMode={setIsDarkMode}
       />
-      <TaskContainer showType={display} isDarkMode={isDarkMode} />
+      {task.data !== undefined && (
+        <TaskContainer
+          taskResponse={task}
+          showType={display}
+          isDarkMode={isDarkMode}
+        />
+      )}
     </div>
   )
 }

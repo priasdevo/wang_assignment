@@ -17,6 +17,7 @@ const TaskCard = (props) => {
     taskId,
     isDarkMode,
   } = props
+  console.log('Props: ', props)
   return (
     <CardContainer
       key={taskId}
