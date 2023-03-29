@@ -16,6 +16,7 @@ import {
   lightModePalette,
   darkModePalette,
 } from '../../../common/constants/theme'
+import useMemberData from 'common/hooks/uesMemberData'
 
 const NewTaskPage = (props) => {
   const { isDarkMode } = props
@@ -38,8 +39,6 @@ const NewTaskPage = (props) => {
     setEstimatedManHour,
     remainingManHour,
     setRemainingManHour,
-    epic,
-    setEpic,
     epicId,
     setEpicId,
     sprintId,
@@ -50,6 +49,8 @@ const NewTaskPage = (props) => {
     setUserStoryId,
     createTask,
   } = useCreateTask()
+
+  const { member } = useMemberData()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -185,17 +186,30 @@ const NewTaskPage = (props) => {
         />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <TextField
-              label="Volunteer"
-              inputProps={{ style: { color: currentPalette.text } }}
-              InputLabelProps={{
-                style: { color: currentPalette.text },
-              }}
-              value={volunteer}
-              onChange={(e) => setVolunteer(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
+            <FormControl fullWidth margin="normal">
+              <InputLabel sx={{ color: currentPalette.text }}>
+                volunteer
+              </InputLabel>
+              <Select
+                label="Assignee"
+                value={volunteer}
+                onChange={(e) => setVolunteer(e.target.value)}
+                sx={{
+                  color: currentPalette.text,
+                }}
+                fullWidth
+              >
+                {Object.keys(member).length !== 0
+                  ? member.map((item) => {
+                      return (
+                        <MenuItem key={item.memberName} value={item.memberName}>
+                          {item.memberName}
+                        </MenuItem>
+                      )
+                    })
+                  : ''}
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -212,34 +226,19 @@ const NewTaskPage = (props) => {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              label="Remaining Man Hour"
-              inputProps={{ style: { color: currentPalette.text } }}
-              InputLabelProps={{
-                style: { color: currentPalette.text },
-              }}
-              value={remainingManHour}
-              onChange={(e) => setRemainingManHour(e.target.value)}
-              fullWidth
-              margin="normal"
-              type="number"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              label="EPIC"
-              inputProps={{ style: { color: currentPalette.text } }}
-              InputLabelProps={{
-                style: { color: currentPalette.text },
-              }}
-              value={epic}
-              onChange={(e) => setEpic(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
-          </Grid>
+        <Grid item xs={12}>
+          <TextField
+            label="Remaining Man Hour"
+            inputProps={{ style: { color: currentPalette.text } }}
+            InputLabelProps={{
+              style: { color: currentPalette.text },
+            }}
+            value={remainingManHour}
+            onChange={(e) => setRemainingManHour(e.target.value)}
+            fullWidth
+            margin="normal"
+            type="number"
+          />
         </Grid>
         <Grid item xs={12}>
           <TextField
