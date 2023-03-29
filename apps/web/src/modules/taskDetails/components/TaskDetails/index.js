@@ -31,7 +31,10 @@ const TaskDetail = (props) => {
     volunteer,
     estimatedManHour,
     remainingManHour,
+    member,
   } = props
+
+  console.log(volunteer, remainingManHour)
 
   const [open, setOpen] = React.useState(false)
 
@@ -119,6 +122,8 @@ const TaskDetail = (props) => {
         onClose={handleClose}
         taskAssignee={volunteer} // Pass the volunteer as taskAssignee
         taskRemaining={remainingManHour}
+        taskId={taskId}
+        member={member}
       />
     </DetailContainer>
   )

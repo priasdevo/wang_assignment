@@ -4,7 +4,7 @@ import { FooterRow } from './styled'
 import EditTaskModal from '../../../EditTaskModal/index'
 
 const TaskCardFooter = (props) => {
-  const { taskRemaining, volunteer, taskId } = props
+  const { taskRemaining, volunteer, taskId, isDarkMode, member } = props
   const [modalOpen, setModalOpen] = React.useState(false)
   const handleOpenModal = (e) => {
     e.preventDefault()
@@ -36,6 +36,8 @@ const TaskCardFooter = (props) => {
         taskRemaining={taskRemaining}
         taskId={taskId}
         onSave={handleSaveChanges}
+        isDarkMode={isDarkMode}
+        member={member}
       />
     </FooterRow>
   )

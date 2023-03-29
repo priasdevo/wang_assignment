@@ -1,16 +1,35 @@
-import React, { useState } from 'react'
-import { Modal, Box, TextField, Button } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Select, MenuItem, Modal, Box, TextField, Button } from '@mui/material'
 import useEditTask from './hooks/useEditTask'
+import {
+  lightModePalette,
+  darkModePalette,
+} from '../../../../../common/constants/theme'
 
 const EditTaskModal = (props) => {
-  const { isOpen, onClose, taskAssignee, taskRemaining, onSave, taskId } = props
+  const {
+    isOpen,
+    onClose,
+    taskAssignee,
+    taskRemaining,
+    taskId,
+    member,
+    isDarkMode,
+  } = props
   const [assignee, setAssignee] = useState(taskAssignee)
   const [remaining, setRemaining] = useState(taskRemaining)
   const { updateTask } = useEditTask()
 
+  const currentPalette = isDarkMode ? darkModePalette : lightModePalette
+  console.log('Modal : ', taskAssignee, taskRemaining)
+  useEffect(() => {
+    setAssignee(taskAssignee)
+    setRemaining(taskRemaining)
+  }, [taskAssignee, taskRemaining])
+
   const handleSave = () => {
-    onSave(assignee, remaining)
     updateTask(taskId, assignee, remaining)
+    window.location.reload()
     onClose()
   }
 
@@ -28,22 +47,37 @@ const EditTaskModal = (props) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: 400,
-          bgcolor: 'background.paper',
+          bgcolor: currentPalette.backgroundAdjust,
           boxShadow: 24,
           p: 4,
           borderRadius: 1,
         }}
       >
-        <h2 id="edit-task-modal-title">Edit Task</h2>
-        <TextField
+        <h2 id="edit-task-modal-title" style={{ color: currentPalette.text }}>
+          Edit Task
+        </h2>
+        <Select
           label="Assignee"
           value={assignee}
           onChange={(e) => setAssignee(e.target.value)}
-          fullWidth
-          margin="dense"
-        />
+          sx={{ color: currentPalette.text, width: '100%' }}
+        >
+          {Object.keys(member).length !== 0
+            ? member.map((item) => {
+                return (
+                  <MenuItem key={item.memberName} value={item.memberName}>
+                    {item.memberName}
+                  </MenuItem>
+                )
+              })
+            : ''}
+        </Select>
         <TextField
           label="Remaining Man Hours"
+          inputProps={{ style: { color: currentPalette.text } }}
+          InputLabelProps={{
+            style: { color: currentPalette.text },
+          }}
           value={remaining}
           onChange={(e) => setRemaining(e.target.value)}
           fullWidth

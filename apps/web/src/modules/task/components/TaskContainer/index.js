@@ -3,7 +3,7 @@ import TaskCard from './TaskCard/index'
 import TaskTable from './TaskTable/index'
 
 const TaskContainer = (props) => {
-  const { showType, isDarkMode, taskResponse } = props
+  const { showType, isDarkMode, taskResponse, member } = props
   console.log('TEST: ', taskResponse)
   return (
     <div
@@ -22,7 +22,12 @@ const TaskContainer = (props) => {
         <>
           {taskResponse.data.map((item) => {
             return (
-              <TaskCard key={item.taskId} isDarkMode={isDarkMode} {...item} />
+              <TaskCard
+                key={item.taskId}
+                isDarkMode={isDarkMode}
+                member={member}
+                {...item}
+              />
             )
           })}
         </>

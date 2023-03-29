@@ -30,7 +30,10 @@ const FilterContainer = (props) => {
     setTaskStatusFilter,
     assigneeFilter,
     setAssigneeFilter,
+    member,
   } = props
+  console.log('MEMBER :', member)
+  console.log('Lenght: ', Object.keys(member).length)
   const handleDisplayChange = (event, newDisplay) => {
     if (newDisplay !== null) {
       setDisplay(newDisplay)
@@ -119,8 +122,15 @@ const FilterContainer = (props) => {
           sx={{ color: currentPalette.text }}
         >
           <MenuItem value={''}>All</MenuItem>
-          <MenuItem value={'P'}>P</MenuItem>
-          <MenuItem value={'Ice'}>Ice</MenuItem>
+          {Object.keys(member).length !== 0
+            ? member.map((item) => {
+                return (
+                  <MenuItem key={item.memberName} value={item.memberName}>
+                    {item.memberName}
+                  </MenuItem>
+                )
+              })
+            : ''}
         </Select>
       </FormControl>
       <ToggleButtonGroup

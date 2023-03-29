@@ -8,9 +8,11 @@ import {
   lightModePalette,
   darkModePalette,
 } from '../../../common/constants/theme'
+import useMemberData from 'common/hooks/uesMemberData'
 
 const TaskPage = (props) => {
   const { isDarkMode } = props
+  const { member } = useMemberData()
   const [display, setDisplay] = React.useState('Card')
   const {
     task,
@@ -51,6 +53,7 @@ const TaskPage = (props) => {
         setTaskStatusFilter={setTaskStatusFilter}
         assigneeFilter={assigneeFilter}
         setAssigneeFilter={setAssigneeFilter}
+        member={member}
       />
       <div style={{ display: 'flex', gap: '10px', width: 'auto' }}>
         <Link
@@ -113,6 +116,7 @@ const TaskPage = (props) => {
             taskResponse={task}
             showType={display}
             isDarkMode={isDarkMode}
+            member={member}
           />
         )}
       </ReactInfiniteScroller>

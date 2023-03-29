@@ -20,6 +20,7 @@ const TaskCard = (props) => {
     remainingManHour,
     taskId,
     isDarkMode,
+    member,
   } = props
   console.log('Props: ', props)
   const currentPalette = isDarkMode ? darkModePalette : lightModePalette
@@ -53,6 +54,8 @@ const TaskCard = (props) => {
           taskRemaining={remainingManHour}
           volunteer={volunteer}
           taskId={taskId}
+          isDarkMode={isDarkMode}
+          member={member}
         />
       </CardContainer>
     </Link>
