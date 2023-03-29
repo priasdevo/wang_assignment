@@ -1,5 +1,5 @@
 import React from 'react'
-import { TableCell, TableRow } from '@mui/material'
+import { Link, TableCell, TableRow } from '@mui/material'
 import {
   lightModePalette,
   darkModePalette,
@@ -10,6 +10,7 @@ const TaskLine = (props) => {
     taskName,
     taskType,
     taskStatus,
+    taskId,
     volunteer,
     remainingManHour,
     isDarkMode,
@@ -18,7 +19,16 @@ const TaskLine = (props) => {
   return (
     <TableRow>
       <TableCell align="left" sx={{ color: currentPalette.text }}>
-        {taskName}
+        <Link
+          href={`/task/${taskId}`}
+          passHref
+          style={{
+            textDecoration: 'none',
+            color: currentPalette.subtext,
+          }}
+        >
+          {taskName}
+        </Link>
       </TableCell>
       <TableCell align="center" sx={{ color: currentPalette.text }}>
         {taskType}
