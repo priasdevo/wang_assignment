@@ -120,9 +120,11 @@ const NewTaskPage = (props) => {
                 sx={{ color: currentPalette.text }}
                 onChange={(e) => setTaskType(e.target.value)}
               >
-                <MenuItem value="feature">Feature</MenuItem>
-                <MenuItem value="bug">Bug</MenuItem>
-                <MenuItem value="improvement">Improvement</MenuItem>
+                <MenuItem value={'Frontend'}>Frontend</MenuItem>
+                <MenuItem value={'Backend'}>Backend</MenuItem>
+                <MenuItem value={'Design'}>Design</MenuItem>
+                <MenuItem value={'Infra'}>Infra</MenuItem>
+                <MenuItem value={'Testing'}>Testing</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -136,9 +138,10 @@ const NewTaskPage = (props) => {
                 sx={{ color: currentPalette.text }}
                 onChange={(e) => setTaskStatus(e.target.value)}
               >
-                <MenuItem value="todo">To Do</MenuItem>
-                <MenuItem value="in-progress">In Progress</MenuItem>
-                <MenuItem value="done">Done</MenuItem>
+                <MenuItem value={'Todo'}>TODO</MenuItem>
+                <MenuItem value={'Develop'}>Develope</MenuItem>
+                <MenuItem value={'Review'}>Review</MenuItem>
+                <MenuItem value={'Done'}>Done</MenuItem>
               </Select>
             </FormControl>
           </Grid>

@@ -25,10 +25,12 @@ const TaskSchema = new mongoose.Schema({
   taskType: {
     type: String,
     required: true,
+    enum: ['Infra', 'Backend', 'Frontend', 'Design', 'Testing'],
   },
   taskStatus: {
     type: String,
     required: true,
+    enum: ['Todo', 'Develop', 'Review', 'Done'],
   },
   expectedDeadline: {
     type: Date,

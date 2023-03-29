@@ -82,8 +82,11 @@ const FilterContainer = (props) => {
           sx={{ color: currentPalette.text }}
         >
           <MenuItem value={''}>All</MenuItem>
-          <MenuItem value={'P'}>Front-End</MenuItem>
-          <MenuItem value={'Ice'}>Back-End</MenuItem>
+          <MenuItem value={'Frontend'}>Frontend</MenuItem>
+          <MenuItem value={'Backend'}>Backend</MenuItem>
+          <MenuItem value={'Design'}>Design</MenuItem>
+          <MenuItem value={'Infra'}>Infra</MenuItem>
+          <MenuItem value={'Testing'}>Testing</MenuItem>
         </Select>
       </FormControl>
       <FormControl
@@ -101,8 +104,8 @@ const FilterContainer = (props) => {
           sx={{ color: currentPalette.text, width: '130px' }}
         >
           <MenuItem value={''}>All</MenuItem>
-          <MenuItem value={'TODO'}>TODO</MenuItem>
-          <MenuItem value={'Develope'}>Develope</MenuItem>
+          <MenuItem value={'Todo'}>TODO</MenuItem>
+          <MenuItem value={'Develop'}>Develope</MenuItem>
           <MenuItem value={'Review'}>Review</MenuItem>
           <MenuItem value={'Done'}>Done</MenuItem>
         </Select>
