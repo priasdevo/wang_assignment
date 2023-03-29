@@ -4,8 +4,7 @@ import TaskCardBody from './components/TaskCardBody/index'
 import TaskCardFooter from './components/TaskCardFooter/index'
 
 import { CardContainer } from './styled'
-import { Divider } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Divider, Link } from '@mui/material'
 import {
   lightModePalette,
   darkModePalette,
@@ -26,7 +25,7 @@ const TaskCard = (props) => {
   const currentPalette = isDarkMode ? darkModePalette : lightModePalette
   return (
     <Link
-      to={`/task/${taskId}`}
+      href={`/task/${taskId}`}
       passHref
       style={{
         display: 'flex',

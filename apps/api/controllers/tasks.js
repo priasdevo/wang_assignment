@@ -90,3 +90,35 @@ exports.getTaskById = async (req, res, next) => {
     res.status(400).json({ success: false })
   }
 }
+
+// @desc      Update a task's remainingManHour and volunteer fields
+// @route     PUT /api/v1/tasks/:taskId
+// @access    Private
+exports.updateTask = async (req, res, next) => {
+  try {
+    const taskId = req.params.taskId
+    const task = await Task.findOne({ taskId: taskId })
+
+    if (!task) {
+      return res.status(404).json({
+        success: false,
+        message: 'Task not found',
+      })
+    }
+
+    // Update remainingManHour and volunteer fields
+    task.remainingManHour = req.body.remainingManHour
+    task.volunteer = req.body.volunteer
+
+    // Save the updated task
+    await task.save()
+
+    res.status(200).json({
+      success: true,
+      data: task,
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({ success: false })
+  }
+}

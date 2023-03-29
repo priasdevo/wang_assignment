@@ -11,12 +11,14 @@ dotenv.config({ path: './config/config.env' })
 connectDB()
 
 const task = require('./routes/task')
+const member = require('./routes/member')
 
 const app = express()
 app.use(cors());
 app.use(express.json())
 
 app.use('/task', task)
+app.use('/member', member)
 
 const PORT = process.env.PORT || 5000
 const server = app.listen(

@@ -6,7 +6,9 @@ import EditTaskModal from '../../../EditTaskModal/index'
 const TaskCardFooter = (props) => {
   const { taskRemaining } = props
   const [modalOpen, setModalOpen] = React.useState(false)
-  const handleOpenModal = () => {
+  const handleOpenModal = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     setModalOpen(true)
   }
 

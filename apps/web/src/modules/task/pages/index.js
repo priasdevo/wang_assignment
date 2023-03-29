@@ -2,12 +2,29 @@ import React from 'react'
 import TaskContainer from '../components/TaskContainer/index'
 import FilterContainer from '../components/FilterContainer/index'
 import useTaskList from './hooks/useTaskListData'
+import ReactInfiniteScroller from 'react-infinite-scroller'
+import { CircularProgress, Button, Link } from '@mui/material'
+import {
+  lightModePalette,
+  darkModePalette,
+} from '../../../common/constants/theme'
 
 const TaskPage = (props) => {
   const { isDarkMode } = props
   const [display, setDisplay] = React.useState('Card')
-  const { task, fetchTaskList } = useTaskList()
-  fetchTaskList()
+  const {
+    task,
+    fetchTaskList,
+    taskNameFilter,
+    setTaskNameFilter,
+    taskTypeFilter,
+    setTaskTypeFilter,
+    taskStatusFilter,
+    setTaskStatusFilter,
+    assigneeFilter,
+    setAssigneeFilter,
+  } = useTaskList()
+  const currentPalette = isDarkMode ? darkModePalette : lightModePalette
   return (
     <div
       className="TaskPage"
@@ -26,14 +43,79 @@ const TaskPage = (props) => {
         display={display}
         setDisplay={setDisplay}
         isDarkMode={isDarkMode}
+        taskNameFilter={taskNameFilter}
+        setTaskNameFilter={setTaskNameFilter}
+        taskTypeFilter={taskTypeFilter}
+        setTaskTypeFilter={setTaskTypeFilter}
+        taskStatusFilter={taskStatusFilter}
+        setTaskStatusFilter={setTaskStatusFilter}
+        assigneeFilter={assigneeFilter}
+        setAssigneeFilter={setAssigneeFilter}
       />
-      {task.data !== undefined && (
-        <TaskContainer
-          taskResponse={task}
-          showType={display}
-          isDarkMode={isDarkMode}
-        />
-      )}
+      <div style={{ display: 'flex', gap: '10px', width: 'auto' }}>
+        <Link
+          href={`/task/new`}
+          passHref
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            color: currentPalette.text,
+            width: '100%',
+          }}
+        >
+          <Button
+            variant="contained"
+            sx={{ width: 'auto', whiteSpace: 'nowrap' }}
+          >
+            New Task
+          </Button>
+        </Link>
+        <Link
+          href={`/member/new`}
+          passHref
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            color: currentPalette.text,
+            width: 'auto',
+          }}
+        >
+          <Button
+            variant="contained"
+            sx={{ width: 'auto', whiteSpace: 'nowrap' }}
+          >
+            New Member
+          </Button>
+        </Link>
+      </div>
+      <ReactInfiniteScroller
+        loadMore={fetchTaskList}
+        hasMore={false}
+        loader={
+          <div
+            className="loader"
+            key={0}
+            style={{
+              display: 'flex',
+              alignItems: 'column',
+              justifyContent: 'center',
+            }}
+          >
+            <CircularProgress color="primary" />
+          </div>
+        }
+        style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+      >
+        {task.data !== undefined && (
+          <TaskContainer
+            taskResponse={task}
+            showType={display}
+            isDarkMode={isDarkMode}
+          />
+        )}
+      </ReactInfiniteScroller>
     </div>
   )
 }
