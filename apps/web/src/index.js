@@ -9,7 +9,10 @@ import * as serviceWorker from './serviceWorker'
 import Navbar from 'common/components/Navbar'
 
 export default function Apps() {
-  const [isDarkMode, setIsDarkMode] = React.useState(false)
+  const [isDarkMode, setIsDarkMode] = React.useState(() => {
+    // Load isDarkMode state from localStorage, default to false
+    return localStorage.getItem('isDarkMode') === 'true' ? true : false
+  })
 
   React.useEffect(() => {
     const body = document.querySelector('body')
@@ -18,6 +21,9 @@ export default function Apps() {
     } else {
       body.classList.remove('dark-mode')
     }
+
+    // Store isDarkMode state in localStorage
+    localStorage.setItem('isDarkMode', isDarkMode)
   }, [isDarkMode])
   return (
     <div>
