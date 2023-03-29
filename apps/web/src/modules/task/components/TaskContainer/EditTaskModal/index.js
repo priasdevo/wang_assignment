@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { Modal, Box, TextField, Button } from '@mui/material'
+import useEditTask from './hooks/useEditTask'
 
 const EditTaskModal = (props) => {
-  const { isOpen, onClose, taskAssignee, taskRemaining, onSave } = props
+  const { isOpen, onClose, taskAssignee, taskRemaining, onSave, taskId } = props
   const [assignee, setAssignee] = useState(taskAssignee)
   const [remaining, setRemaining] = useState(taskRemaining)
+  const { updateTask } = useEditTask()
 
   const handleSave = () => {
     onSave(assignee, remaining)
+    updateTask(taskId, assignee, remaining)
     onClose()
   }
 

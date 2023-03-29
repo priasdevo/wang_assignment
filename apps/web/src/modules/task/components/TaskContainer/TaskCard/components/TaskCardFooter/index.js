@@ -4,7 +4,7 @@ import { FooterRow } from './styled'
 import EditTaskModal from '../../../EditTaskModal/index'
 
 const TaskCardFooter = (props) => {
-  const { taskRemaining } = props
+  const { taskRemaining, volunteer, taskId } = props
   const [modalOpen, setModalOpen] = React.useState(false)
   const handleOpenModal = (e) => {
     e.preventDefault()
@@ -32,8 +32,9 @@ const TaskCardFooter = (props) => {
       <EditTaskModal
         isOpen={modalOpen}
         onClose={handleCloseModal}
-        taskAssignee={props.taskAssignee}
-        taskRemaining={props.taskRemaining}
+        taskAssignee={volunteer}
+        taskRemaining={taskRemaining}
+        taskId={taskId}
         onSave={handleSaveChanges}
       />
     </FooterRow>

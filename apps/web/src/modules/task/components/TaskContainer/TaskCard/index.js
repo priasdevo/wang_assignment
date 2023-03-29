@@ -49,7 +49,11 @@ const TaskCard = (props) => {
           taskAssignee={volunteer}
         />
         <Divider variant="fullWidth" style={{ width: '100%' }} />
-        <TaskCardFooter taskRemaining={remainingManHour} />
+        <TaskCardFooter
+          taskRemaining={remainingManHour}
+          volunteer={volunteer}
+          taskId={taskId}
+        />
       </CardContainer>
     </Link>
   )
