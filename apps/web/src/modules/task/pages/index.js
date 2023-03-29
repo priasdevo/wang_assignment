@@ -4,7 +4,7 @@ import FilterContainer from '../components/FilterContainer/index'
 import useTaskList from './hooks/useTaskListData'
 
 const TaskPage = (props) => {
-  const { isDarkMode, setIsDarkMode } = props
+  const { isDarkMode } = props
   const [display, setDisplay] = React.useState('Card')
   const { task, fetchTaskList } = useTaskList()
   fetchTaskList()
@@ -19,13 +19,13 @@ const TaskPage = (props) => {
         alignItems: 'center',
         gap: '15px',
         padding: '15px',
+        boxSizing: 'border-box',
       }}
     >
       <FilterContainer
         display={display}
         setDisplay={setDisplay}
         isDarkMode={isDarkMode}
-        setIsDarkMode={setIsDarkMode}
       />
       {task.data !== undefined && (
         <TaskContainer

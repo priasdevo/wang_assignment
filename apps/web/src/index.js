@@ -6,6 +6,7 @@ import TaskPage from './modules/task/pages/index'
 import TaskDetail from './modules/taskDetails/pages'
 import NewTaskPage from './modules/newTask/pages/index'
 import * as serviceWorker from './serviceWorker'
+import Navbar from 'common/components/Navbar'
 
 export default function Apps() {
   const [isDarkMode, setIsDarkMode] = React.useState(false)
@@ -20,19 +21,16 @@ export default function Apps() {
   }, [isDarkMode])
   return (
     <div>
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <BrowserRouter>
         <Routes>
           <Route
             path="/"
-            element={
-              <TaskPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-            }
+            element={<TaskPage isDarkMode={isDarkMode} />}
           ></Route>
           <Route
             path="/task"
-            element={
-              <TaskPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-            }
+            element={<TaskPage isDarkMode={isDarkMode} />}
           ></Route>
           <Route path="/task/:taskId" element={<TaskDetail />}></Route>
           <Route path="/task/new" element={<NewTaskPage />}></Route>

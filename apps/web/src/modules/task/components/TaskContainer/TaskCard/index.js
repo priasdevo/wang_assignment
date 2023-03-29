@@ -6,6 +6,10 @@ import TaskCardFooter from './components/TaskCardFooter/index'
 import { CardContainer } from './styled'
 import { Divider } from '@mui/material'
 import { Link } from 'react-router-dom'
+import {
+  lightModePalette,
+  darkModePalette,
+} from '../../../../../common/constants/theme'
 
 const TaskCard = (props) => {
   const {
@@ -19,6 +23,7 @@ const TaskCard = (props) => {
     isDarkMode,
   } = props
   console.log('Props: ', props)
+  const currentPalette = isDarkMode ? darkModePalette : lightModePalette
   return (
     <Link
       to={`/task/${taskId}`}
@@ -27,13 +32,13 @@ const TaskCard = (props) => {
         display: 'flex',
         justifyContent: 'center',
         textDecoration: 'none',
-        color: 'inherit',
+        color: currentPalette.text,
         width: '100%',
       }}
     >
       <CardContainer
         key={taskId}
-        sx={{ backgroundColor: isDarkMode ? '#D4C4A4' : '' }}
+        sx={{ backgroundColor: currentPalette.backgroundAdjust }}
       >
         <TaskCardHeader
           taskName={taskName}

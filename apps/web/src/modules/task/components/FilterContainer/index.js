@@ -11,23 +11,20 @@ import {
 import {
   ViewListOutlined,
   FormatListBulletedOutlined,
-  LightMode,
-  DarkMode,
 } from '@mui/icons-material'
+import {
+  lightModePalette,
+  darkModePalette,
+} from '../../../../common/constants/theme'
 
 const FilterContainer = (props) => {
-  const { display, setDisplay, isDarkMode, setIsDarkMode } = props
+  const { display, setDisplay, isDarkMode } = props
   const handleDisplayChange = (event, newDisplay) => {
     if (newDisplay !== null) {
       setDisplay(newDisplay)
     }
   }
-
-  const handleThemeChange = (event, newTheme) => {
-    if (newTheme !== null) {
-      setIsDarkMode(newTheme)
-    }
-  }
+  const currentPalette = isDarkMode ? darkModePalette : lightModePalette
 
   return (
     <div
@@ -44,17 +41,23 @@ const FilterContainer = (props) => {
     >
       <TextField
         label="Task name"
-        sx={{ backgroundColor: isDarkMode ? '#D4C4A4' : 'white' }}
+        sx={{
+          backgroundColor: currentPalette.backgroundAdjust,
+          color: currentPalette.text,
+        }}
+        InputLabelProps={{
+          style: { color: currentPalette.text },
+        }}
       />
       <FormControl
         sx={{
           m: 1,
           minWidth: 120,
-          backgroundColor: isDarkMode ? '#D4C4A4' : 'white',
+          backgroundColor: currentPalette.backgroundAdjust,
         }}
       >
-        <InputLabel>Task Type</InputLabel>
-        <Select label="TaskType">
+        <InputLabel sx={{ color: currentPalette.text }}>Task Type</InputLabel>
+        <Select label="TaskType" sx={{ color: currentPalette.text }}>
           <MenuItem value={'P'}>Front-End</MenuItem>
           <MenuItem value={'Ice'}>Back-End</MenuItem>
         </Select>
@@ -63,11 +66,14 @@ const FilterContainer = (props) => {
         sx={{
           m: 1,
           minWidth: 120,
-          backgroundColor: isDarkMode ? '#D4C4A4' : 'white',
+          backgroundColor: currentPalette.backgroundAdjust,
         }}
       >
-        <InputLabel>JobStatus</InputLabel>
-        <Select label="JobStatus">
+        <InputLabel sx={{ color: currentPalette.text }}>Task Status</InputLabel>
+        <Select
+          label="JobStatus"
+          sx={{ color: currentPalette.text, width: '130px' }}
+        >
           <MenuItem value={'TODO'}>TODO</MenuItem>
           <MenuItem value={'Develope'}>Develope</MenuItem>
           <MenuItem value={'Review'}>Review</MenuItem>
@@ -78,11 +84,11 @@ const FilterContainer = (props) => {
         sx={{
           m: 1,
           minWidth: 120,
-          backgroundColor: isDarkMode ? '#D4C4A4' : 'white',
+          backgroundColor: currentPalette.backgroundAdjust,
         }}
       >
-        <InputLabel>Assignee</InputLabel>
-        <Select label="Assignee">
+        <InputLabel sx={{ color: currentPalette.text }}>Assignee</InputLabel>
+        <Select label="Assignee" sx={{ color: currentPalette.text }}>
           <MenuItem value={'P'}>P</MenuItem>
           <MenuItem value={'Ice'}>Ice</MenuItem>
         </Select>
@@ -91,29 +97,14 @@ const FilterContainer = (props) => {
         value={display}
         onChange={handleDisplayChange}
         exclusive={true}
-        sx={{ backgroundColor: isDarkMode ? '#D4C4A4' : 'white' }}
+        sx={{ backgroundColor: currentPalette.backgroundAdjust }}
         aria-label="Medium sizes"
       >
         <ToggleButton value="Card" key="Card">
-          <ViewListOutlined />
+          <ViewListOutlined style={{ color: currentPalette.text }} />
         </ToggleButton>
         <ToggleButton value="Table" key="Table">
-          <FormatListBulletedOutlined />
-        </ToggleButton>
-      </ToggleButtonGroup>
-
-      <ToggleButtonGroup
-        value={isDarkMode}
-        onChange={handleThemeChange}
-        exclusive={true}
-        sx={{ backgroundColor: isDarkMode ? '#D4C4A4' : 'white' }}
-        aria-label="Medium sizes"
-      >
-        <ToggleButton value={false} key="Light">
-          <LightMode />
-        </ToggleButton>
-        <ToggleButton value={true} key="Dark">
-          <DarkMode />
+          <FormatListBulletedOutlined style={{ color: currentPalette.text }} />
         </ToggleButton>
       </ToggleButtonGroup>
     </div>

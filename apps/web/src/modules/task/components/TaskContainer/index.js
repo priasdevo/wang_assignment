@@ -12,7 +12,7 @@ const TaskContainer = (props) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        width: '100%',
+        width: '55%',
         alignItems: 'center',
         gap: '15px',
         padding: '15px',
@@ -29,7 +29,7 @@ const TaskContainer = (props) => {
       )}
       {showType === 'Table' && (
         <>
-          <TaskTable isDarkMode={isDarkMode} task={taskResponse.task} />
+          <TaskTable isDarkMode={isDarkMode} task={taskResponse.data} />
         </>
       )}
     </div>
