@@ -38,7 +38,10 @@ export default function Apps() {
             path="/task"
             element={<TaskPage isDarkMode={isDarkMode} />}
           ></Route>
-          <Route path="/task/:taskId" element={<TaskDetail />}></Route>
+          <Route
+            path="/task/:taskId"
+            element={<TaskDetail isDarkMode={isDarkMode} />}
+          ></Route>
           <Route
             path="/task/new"
             element={<NewTaskPage isDarkMode={isDarkMode} />}

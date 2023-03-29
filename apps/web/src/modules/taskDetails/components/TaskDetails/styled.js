@@ -10,7 +10,6 @@ export const DetailContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 12px;
 `

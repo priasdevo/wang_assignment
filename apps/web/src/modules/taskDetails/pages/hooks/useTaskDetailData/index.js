@@ -20,7 +20,7 @@ const useTaskDetailData = () => {
   }, [taskId])
   useEffect(() => {
     fetchTask()
-  }, [taskId, fetchTask])
+  }, [fetchTask])
 
   return { fetchTask, task }
 }

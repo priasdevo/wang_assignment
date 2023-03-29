@@ -15,6 +15,10 @@ import {
   Schedule,
 } from '@mui/icons-material'
 import EditTaskModal from '../../../task/components/TaskContainer/EditTaskModal/index'
+import {
+  lightModePalette,
+  darkModePalette,
+} from '../../../../common/constants/theme'
 
 const TaskDetail = (props) => {
   const {
@@ -32,8 +36,10 @@ const TaskDetail = (props) => {
     estimatedManHour,
     remainingManHour,
     member,
+    isDarkMode,
   } = props
 
+  const currentPalette = isDarkMode ? darkModePalette : lightModePalette
   console.log(volunteer, remainingManHour)
 
   const [open, setOpen] = React.useState(false)
@@ -50,7 +56,12 @@ const TaskDetail = (props) => {
   }
 
   return (
-    <DetailContainer>
+    <DetailContainer
+      style={{
+        backgroundColor: currentPalette.backgroundAdjust,
+        color: currentPalette.text,
+      }}
+    >
       <Typography variant="h4" gutterBottom>
         Task Details
       </Typography>

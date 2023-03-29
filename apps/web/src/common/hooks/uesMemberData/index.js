@@ -15,7 +15,9 @@ const useMemberData = () => {
     }
   }, [])
   useEffect(() => {
-    getMember()
+    if (Object.keys(member).length === 0) {
+      getMember()
+    }
   }, [member])
   return {
     member,
