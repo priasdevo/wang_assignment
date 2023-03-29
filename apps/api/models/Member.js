@@ -4,6 +4,7 @@ const MemberSchema = new mongoose.Schema({
   memberName: {
     type: String,
     required: true,
+    unique: true,
   },
   createdAt: {
     type: Date,
