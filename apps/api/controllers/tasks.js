@@ -1,10 +1,19 @@
 const Task = require('../models/Task')
+const Member = require('../models/Member');
 
 // @desc      Create a new task
 // @route     POST /api/v1/tasks
 // @access    Private
 exports.createTask = async (req, res, next) => {
   try {
+
+    const member = await Member.findOne({ memberName: req.body.volunteer });
+    if (!member) {
+      return res.status(400).json({
+        success: false,
+        message: 'Volunteer does not exist',
+      });
+    }
 
     const newTask = await Task.create(req.body)
 
@@ -109,6 +118,15 @@ exports.updateTask = async (req, res, next) => {
     // Update remainingManHour and volunteer fields
     task.remainingManHour = req.body.remainingManHour
     task.volunteer = req.body.volunteer
+
+    // Check if the volunteer exists in the Member collection
+    const member = await Member.findOne({ memberName: volunteer });
+    if (!member) {
+      return res.status(400).json({
+        success: false,
+        message: 'Volunteer does not exist',
+      });
+    }
 
     // Save the updated task
     await task.save()
