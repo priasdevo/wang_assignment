@@ -4,6 +4,7 @@ import TaskTable from './TaskTable/index'
 
 const TaskContainer = (props) => {
   const { showType, isDarkMode, taskResponse, member } = props
+
   console.log('TEST: ', taskResponse)
   return (
     <div

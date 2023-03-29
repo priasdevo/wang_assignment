@@ -9,6 +9,7 @@ import {
   darkModePalette,
 } from '../../../common/constants/theme'
 import useMemberData from 'common/hooks/uesMemberData'
+import NewMemberModal from '../../../common/components/NewMemberModal/index'
 
 const TaskPage = (props) => {
   const { isDarkMode } = props
@@ -27,6 +28,15 @@ const TaskPage = (props) => {
     setAssigneeFilter,
   } = useTaskList()
   const currentPalette = isDarkMode ? darkModePalette : lightModePalette
+  const [modalOpen, setModalOpen] = React.useState(false)
+  const handleOpenModal = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setModalOpen(true)
+  }
+  const handleCloseModal = () => {
+    setModalOpen(false)
+  }
   return (
     <div
       className="TaskPage"
@@ -74,24 +84,13 @@ const TaskPage = (props) => {
             New Task
           </Button>
         </Link>
-        <Link
-          href={`/member/new`}
-          passHref
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            textDecoration: 'none',
-            color: currentPalette.text,
-            width: 'auto',
-          }}
+        <Button
+          variant="contained"
+          sx={{ width: '100%', whiteSpace: 'nowrap' }}
+          onClick={handleOpenModal}
         >
-          <Button
-            variant="contained"
-            sx={{ width: 'auto', whiteSpace: 'nowrap' }}
-          >
-            New Member
-          </Button>
-        </Link>
+          New Member
+        </Button>
       </div>
       <ReactInfiniteScroller
         loadMore={fetchTaskList}
@@ -120,6 +119,12 @@ const TaskPage = (props) => {
           />
         )}
       </ReactInfiniteScroller>
+      <NewMemberModal
+        isOpen={modalOpen}
+        onClose={handleCloseModal}
+        isDarkMode={isDarkMode}
+        member={member}
+      />
     </div>
   )
 }
