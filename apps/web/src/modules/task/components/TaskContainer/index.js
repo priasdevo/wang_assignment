@@ -20,8 +20,10 @@ const TaskContainer = (props) => {
     >
       {showType === 'Card' && (
         <>
-          {taskResponse.data.map((item, index) => {
-            return <TaskCard key={index} isDarkMode={isDarkMode} {...item} />
+          {taskResponse.data.map((item) => {
+            return (
+              <TaskCard key={item.taskId} isDarkMode={isDarkMode} {...item} />
+            )
           })}
         </>
       )}

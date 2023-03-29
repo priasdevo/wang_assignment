@@ -5,6 +5,7 @@ import TaskCardFooter from './components/TaskCardFooter/index'
 
 import { CardContainer } from './styled'
 import { Divider } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const TaskCard = (props) => {
   const {
@@ -12,29 +13,41 @@ const TaskCard = (props) => {
     taskType,
     taskStatus,
     taskDescription,
-    taskAssignee,
-    taskRemaining,
+    volunteer,
+    remainingManHour,
     taskId,
     isDarkMode,
   } = props
   console.log('Props: ', props)
   return (
-    <CardContainer
-      key={taskId}
-      sx={{ backgroundColor: isDarkMode ? '#D4C4A4' : '' }}
+    <Link
+      to={`/task/${taskId}`}
+      passHref
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        textDecoration: 'none',
+        color: 'inherit',
+        width: '100%',
+      }}
     >
-      <TaskCardHeader
-        taskName={taskName}
-        taskStatus={taskStatus}
-        taskType={taskType}
-      />
-      <TaskCardBody
-        taskDescription={taskDescription}
-        taskAssignee={taskAssignee}
-      />
-      <Divider variant="fullWidth" style={{ width: '100%' }} />
-      <TaskCardFooter taskRemaining={taskRemaining} />
-    </CardContainer>
+      <CardContainer
+        key={taskId}
+        sx={{ backgroundColor: isDarkMode ? '#D4C4A4' : '' }}
+      >
+        <TaskCardHeader
+          taskName={taskName}
+          taskStatus={taskStatus}
+          taskType={taskType}
+        />
+        <TaskCardBody
+          taskDescription={taskDescription}
+          taskAssignee={volunteer}
+        />
+        <Divider variant="fullWidth" style={{ width: '100%' }} />
+        <TaskCardFooter taskRemaining={remainingManHour} />
+      </CardContainer>
+    </Link>
   )
 }
 

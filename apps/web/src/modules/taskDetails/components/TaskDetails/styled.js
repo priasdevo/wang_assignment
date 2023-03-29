@@ -4,7 +4,8 @@ export const DetailContainer = styled.div`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  margin-top: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding: 24px;
   display: flex;
   flex-direction: column;

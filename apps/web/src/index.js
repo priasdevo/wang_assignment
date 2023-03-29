@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
-import App from './modules/example/pages/index'
 import TaskPage from './modules/task/pages/index'
 import TaskDetail from './modules/taskDetails/pages'
 import NewTaskPage from './modules/newTask/pages/index'
@@ -23,34 +22,19 @@ export default function Apps() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />}></Route>
           <Route
-            path="/test"
+            path="/"
             element={
               <TaskPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             }
           ></Route>
           <Route
-            path="/task/:taskId"
+            path="/task"
             element={
-              <TaskDetail
-                epic="Sample Epic"
-                epicId="E123"
-                sprintId="S123"
-                taskId="T123"
-                taskName="Sample Task"
-                taskDescription="This is a sample task description."
-                taskType="Development"
-                taskStatus="In Progress"
-                expectedDeadline="2023-03-30"
-                userStory="As a user, I want to view task details."
-                userStoryId="US123"
-                volunteer="John Doe"
-                estimatedManHours={40}
-                remainingManHours={20}
-              />
+              <TaskPage isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             }
           ></Route>
+          <Route path="/task/:taskId" element={<TaskDetail />}></Route>
           <Route path="/task/new" element={<NewTaskPage />}></Route>
         </Routes>
       </BrowserRouter>

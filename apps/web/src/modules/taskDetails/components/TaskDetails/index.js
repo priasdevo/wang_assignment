@@ -10,7 +10,6 @@ import {
   HourglassEmpty,
   HourglassFull,
   Label,
-  List,
   Person,
   PlaylistAddCheck,
   Schedule,
@@ -19,7 +18,6 @@ import EditTaskModal from '../../../task/components/TaskContainer/EditTaskModal/
 
 const TaskDetail = (props) => {
   const {
-    epic,
     epicId,
     sprintId,
     taskName,
@@ -54,9 +52,6 @@ const TaskDetail = (props) => {
         Task Details
       </Typography>
       <DetailRow>
-        <DetailItem>
-          <List /> <strong>EPIC:</strong> {epic}
-        </DetailItem>
         <DetailItem>
           <Label /> <strong>EPIC_ID:</strong> {epicId}
         </DetailItem>

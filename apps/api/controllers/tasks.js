@@ -48,7 +48,7 @@ exports.getTaskList = async (req, res, next) => {
     const totalTasks = await Task.countDocuments(filter)
     const tasks = await Task.find(filter)
       .select(
-        'taskId taskName taskDescription taskType taskStatus expectedDeadline volunteer estimatedManhour remainingManhour',
+        'taskId taskName taskDescription taskType taskStatus expectedDeadline volunteer estimatedManHour remainingManHour',
       )
       .skip(startIndex)
       .limit(pageSize)
