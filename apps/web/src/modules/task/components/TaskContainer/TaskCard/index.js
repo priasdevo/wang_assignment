@@ -44,6 +44,7 @@ const TaskCard = (props) => {
           taskName={taskName}
           taskStatus={taskStatus}
           taskType={taskType}
+          isDarkMode={isDarkMode}
         />
         <TaskCardBody
           taskDescription={taskDescription}
