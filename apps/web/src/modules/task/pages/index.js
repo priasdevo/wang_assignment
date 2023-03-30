@@ -26,6 +26,7 @@ const TaskPage = (props) => {
     setTaskStatusFilter,
     assigneeFilter,
     setAssigneeFilter,
+    hasMore,
   } = useTaskList()
   const currentPalette = isDarkMode ? darkModePalette : lightModePalette
   const [modalOpen, setModalOpen] = React.useState(false)
@@ -93,8 +94,10 @@ const TaskPage = (props) => {
         </Button>
       </div>
       <ReactInfiniteScroller
-        loadMore={fetchTaskList}
-        hasMore={false}
+        loadMore={() => {
+          fetchTaskList()
+        }}
+        hasMore={hasMore}
         loader={
           <div
             className="loader"

@@ -21,7 +21,6 @@ const EditTaskModal = (props) => {
   const { updateTask } = useEditTask()
 
   const currentPalette = isDarkMode ? darkModePalette : lightModePalette
-  console.log('Modal : ', taskAssignee, taskRemaining)
   useEffect(() => {
     setAssignee(taskAssignee)
     setRemaining(taskRemaining)

@@ -22,7 +22,6 @@ const TaskCard = (props) => {
     isDarkMode,
     member,
   } = props
-  console.log('Props: ', props)
   const currentPalette = isDarkMode ? darkModePalette : lightModePalette
   return (
     <Link
