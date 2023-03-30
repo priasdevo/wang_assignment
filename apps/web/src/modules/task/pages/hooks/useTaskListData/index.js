@@ -29,11 +29,20 @@ const useTaskList = () => {
             'Content-Type': 'application/json',
           },
         })
-        setTask((prevTask) => ({
-          ...prevTask,
-          data: [...(prevTask.data || []), ...data.data],
-          maxPage: data.maxPage,
-        }))
+        if (page === 1) {
+          setTask((prevTask) => ({
+            ...prevTask,
+            data: [...data.data],
+            maxPage: data.maxPage,
+          }))
+        } else {
+          setTask((prevTask) => ({
+            ...prevTask,
+            data: [...(prevTask.data || []), ...data.data],
+            maxPage: data.maxPage,
+          }))
+        }
+
         console.log(data.maxPage, page)
         console.log(data.maxPage > page)
         console.log(hasMore)
