@@ -15,6 +15,7 @@ import {
   Schedule,
 } from '@mui/icons-material'
 import EditTaskModal from '../../../../common/components/EditTaskModal/index'
+import DeleteTaskModal from '../DeleteTaskModal'
 import {
   lightModePalette,
   darkModePalette,
@@ -43,6 +44,15 @@ const TaskDetail = (props) => {
   console.log(volunteer, remainingManHour)
 
   const [open, setOpen] = React.useState(false)
+  const [deleteModalOpen, setDeleteModalOpen] = React.useState(false)
+
+  const handleDelete = () => {
+    setDeleteModalOpen(true)
+  }
+
+  const handleCloseDeleteModal = () => {
+    setDeleteModalOpen(false)
+  }
 
   const handleOpen = () => {
     console.log('EE')
@@ -125,16 +135,28 @@ const TaskDetail = (props) => {
           {remainingManHour} hr
         </DetailItem>
       </DetailRow>
-      <Button variant="outlined" onClick={handleOpen}>
-        Edit Task
-      </Button>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Button variant="outlined" onClick={handleDelete}>
+          Delete Task
+        </Button>
+        <Button variant="outlined" onClick={handleOpen}>
+          Edit Task
+        </Button>
+      </div>
       <EditTaskModal
         isOpen={open}
         onClose={handleClose}
         taskAssignee={volunteer} // Pass the volunteer as taskAssignee
         taskRemaining={remainingManHour}
         taskId={taskId}
+        taskStatus={taskStatus}
         member={member}
+      />
+      <DeleteTaskModal
+        isOpen={deleteModalOpen}
+        onClose={handleCloseDeleteModal}
+        taskId={taskId}
+        isDarkMode={isDarkMode}
       />
     </DetailContainer>
   )
