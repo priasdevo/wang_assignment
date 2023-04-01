@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mui/x-date-pickers": "^6.0.4",
     "concurrently": "^7.6.0",
+    "dayjs": "^1.11.7",
     "eslint": "^6.1.0",
     "yarn": "^1.22.5"
   },

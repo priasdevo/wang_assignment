@@ -48,6 +48,7 @@ const NewTaskPage = (props) => {
     userStoryId,
     setUserStoryId,
     createTask,
+    error,
   } = useCreateTask()
 
   const { member } = useMemberData()
@@ -81,6 +82,8 @@ const NewTaskPage = (props) => {
             onChange={(e) => setTaskName(e.target.value)}
             fullWidth
             margin="normal"
+            error={!!error.taskName}
+            helperText={error.taskName}
           />
         </Grid>
         <Grid item xs={12}>
@@ -94,6 +97,8 @@ const NewTaskPage = (props) => {
             onChange={(e) => setTaskId(e.target.value)}
             fullWidth
             margin="normal"
+            error={!!error.taskId}
+            helperText={error.taskId}
           />
         </Grid>
         <TextField
@@ -108,6 +113,8 @@ const NewTaskPage = (props) => {
           margin="normal"
           multiline
           rows={4}
+          error={!!error.taskDescription}
+          helperText={error.taskDescription}
         />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
@@ -119,6 +126,7 @@ const NewTaskPage = (props) => {
                 value={taskType}
                 sx={{ color: currentPalette.text }}
                 onChange={(e) => setTaskType(e.target.value)}
+                error={!!error.taskType}
               >
                 <MenuItem value={'Frontend'}>Frontend</MenuItem>
                 <MenuItem value={'Backend'}>Backend</MenuItem>
@@ -126,6 +134,11 @@ const NewTaskPage = (props) => {
                 <MenuItem value={'Infra'}>Infra</MenuItem>
                 <MenuItem value={'Testing'}>Testing</MenuItem>
               </Select>
+              {error.taskType && (
+                <Typography variant="caption" color="error">
+                  {error.taskType}
+                </Typography>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -137,12 +150,18 @@ const NewTaskPage = (props) => {
                 value={taskStatus}
                 sx={{ color: currentPalette.text }}
                 onChange={(e) => setTaskStatus(e.target.value)}
+                error={!!error.taskStatus}
               >
                 <MenuItem value={'Todo'}>TODO</MenuItem>
                 <MenuItem value={'Develop'}>Develope</MenuItem>
                 <MenuItem value={'Review'}>Review</MenuItem>
                 <MenuItem value={'Done'}>Done</MenuItem>
               </Select>
+              {error.taskStatus && (
+                <Typography variant="caption" color="error">
+                  {error.taskStatus}
+                </Typography>
+              )}
             </FormControl>
           </Grid>
         </Grid>
@@ -160,6 +179,8 @@ const NewTaskPage = (props) => {
               onChange={(e) => setExpectedDeadline(e.target.value)}
               fullWidth
               margin="normal"
+              error={!!error.expectedDeadline}
+              helperText={error.expectedDeadline}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -173,6 +194,8 @@ const NewTaskPage = (props) => {
               onChange={(e) => setUserStoryId(e.target.value)}
               fullWidth
               margin="normal"
+              error={!!error.userStoryId}
+              helperText={error.userStoryId}
             />
           </Grid>
         </Grid>
@@ -186,6 +209,8 @@ const NewTaskPage = (props) => {
           onChange={(e) => setUserStory(e.target.value)}
           fullWidth
           margin="normal"
+          error={!!error.userStory}
+          helperText={error.userStory}
         />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
@@ -201,6 +226,7 @@ const NewTaskPage = (props) => {
                   color: currentPalette.text,
                 }}
                 fullWidth
+                error={!!error.volunteer}
               >
                 {Object.keys(member).length !== 0
                   ? member.map((item) => {
@@ -212,6 +238,11 @@ const NewTaskPage = (props) => {
                     })
                   : ''}
               </Select>
+              {error.volunteer && (
+                <Typography variant="caption" color="error">
+                  {error.volunteer}
+                </Typography>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -226,6 +257,8 @@ const NewTaskPage = (props) => {
               fullWidth
               margin="normal"
               type="number"
+              error={!!error.estimatedManHour}
+              helperText={error.estimatedManHour}
             />
           </Grid>
         </Grid>
@@ -241,6 +274,8 @@ const NewTaskPage = (props) => {
             fullWidth
             margin="normal"
             type="number"
+            error={!!error.remainingManHour}
+            helperText={error.remainingManHour}
           />
         </Grid>
         <Grid item xs={12}>
@@ -254,6 +289,8 @@ const NewTaskPage = (props) => {
             onChange={(e) => setEpicId(e.target.value)}
             fullWidth
             margin="normal"
+            error={!!error.epicId}
+            helperText={error.epicId}
           />
         </Grid>
         <Grid item xs={12}>
@@ -267,6 +304,8 @@ const NewTaskPage = (props) => {
             onChange={(e) => setSprintId(e.target.value)}
             fullWidth
             margin="normal"
+            error={!!error.sprintId}
+            helperText={error.sprintId}
           />
         </Grid>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
