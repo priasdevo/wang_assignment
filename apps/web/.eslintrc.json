@@ -1,0 +1,8 @@
+{
+    "extends": [
+      "../../.eslintrc"
+    ],
+    "rules": {
+      // Add any project-specific rules here
+    }
+  }
