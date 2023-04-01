@@ -14,7 +14,7 @@ import {
   PlaylistAddCheck,
   Schedule,
 } from '@mui/icons-material'
-import EditTaskModal from '../../../task/components/TaskContainer/EditTaskModal/index'
+import EditTaskModal from '../../../../common/components/EditTaskModal/index'
 import {
   lightModePalette,
   darkModePalette,

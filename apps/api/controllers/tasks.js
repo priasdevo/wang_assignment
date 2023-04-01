@@ -2,7 +2,7 @@ const Task = require('../models/Task')
 const Member = require('../models/Member');
 
 // @desc      Create a new task
-// @route     POST /api/v1/tasks
+// @route     POST /tasks
 // @access    Private
 exports.createTask = async (req, res, next) => {
   try {
@@ -28,7 +28,7 @@ exports.createTask = async (req, res, next) => {
 }
 
 // @desc      Get filtered task list with pagination
-// @route     GET /api/v1/tasks
+// @route     GET /tasks
 // @access    Private
 exports.getTaskList = async (req, res, next) => {
   try {
@@ -76,7 +76,7 @@ exports.getTaskList = async (req, res, next) => {
 }
 
 // @desc      Get a specific task with all details
-// @route     GET /api/v1/tasks/:taskId
+// @route     GET /tasks/:taskId
 // @access    Private
 exports.getTaskById = async (req, res, next) => {
   try {
@@ -101,7 +101,7 @@ exports.getTaskById = async (req, res, next) => {
 }
 
 // @desc      Update a task's remainingManHour and volunteer fields
-// @route     PUT /api/v1/tasks/:taskId
+// @route     PUT /tasks/:taskId
 // @access    Private
 exports.updateTask = async (req, res, next) => {
   try {
@@ -117,6 +117,7 @@ exports.updateTask = async (req, res, next) => {
     // Update remainingManHour and volunteer fields
     task.remainingManHour = req.body.remainingManHour
     task.volunteer = req.body.volunteer
+    task.taskStatus = req.body.taskStatus
 
     // Check if the volunteer exists in the Member collection
     const member = await Member.findOne({ memberName: task.volunteer });
@@ -139,3 +140,30 @@ exports.updateTask = async (req, res, next) => {
     res.status(400).json({ success: false })
   }
 }
+
+
+// @desc Delete a task
+// @route DELETE /tasks/:taskId
+// @access Private
+exports.deleteTask = async (req, res, next) => {
+  try {
+  const taskId = req.params.taskId;
+  const task = await Task.findOne({ taskId: taskId });
+  if (!task) {
+    return res.status(404).json({
+      success: false,
+      message: 'Task not found',
+    });
+  }
+  
+  await task.remove();
+  
+  res.status(200).json({
+    success: true,
+    message: 'Task deleted successfully',
+  });
+} catch (err) {
+  console.error(err);
+  res.status(400).json({ success: false });
+  }
+  };  

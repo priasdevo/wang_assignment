@@ -56,6 +56,7 @@ const TaskCard = (props) => {
           taskId={taskId}
           isDarkMode={isDarkMode}
           member={member}
+          taskStatus={taskStatus}
         />
       </CardContainer>
     </Link>

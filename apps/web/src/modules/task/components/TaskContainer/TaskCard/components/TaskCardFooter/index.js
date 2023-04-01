@@ -1,10 +1,12 @@
 import React from 'react'
 import { Typography, Button } from '@mui/material'
 import { FooterRow } from './styled'
-import EditTaskModal from '../../../EditTaskModal/index'
+import EditTaskModal from '../../../../../../../common/components/EditTaskModal/index'
 
 const TaskCardFooter = (props) => {
-  const { taskRemaining, volunteer, taskId, isDarkMode, member } = props
+  const { taskRemaining, volunteer, taskId, isDarkMode, member, taskStatus } =
+    props
+  console.log(taskStatus)
   const [modalOpen, setModalOpen] = React.useState(false)
   const handleOpenModal = (e) => {
     e.preventDefault()
@@ -38,6 +40,7 @@ const TaskCardFooter = (props) => {
         onSave={handleSaveChanges}
         isDarkMode={isDarkMode}
         member={member}
+        taskStatus={taskStatus}
       />
     </FooterRow>
   )
