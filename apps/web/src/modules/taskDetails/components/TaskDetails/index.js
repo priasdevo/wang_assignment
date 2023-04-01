@@ -109,7 +109,7 @@ const TaskDetail = (props) => {
       <Divider />
       <DetailItem>
         <HourglassEmpty /> <strong>Expected_DeadLine:</strong>{' '}
-        {expectedDeadline}
+        {new Date(expectedDeadline).toLocaleDateString('en-GB')}
       </DetailItem>
       <Divider />
       <DetailItem>
